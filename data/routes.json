@@ -1,0 +1,35 @@
+{
+  "routes": [
+    { "source": "Indonesia", "destination": "Malaysia", "cost": 180, "duration": 2.5 },
+    { "source": "Indonesia", "destination": "Myanmar", "cost": 120, "duration": 4.0 },
+    { "source": "Malaysia", "destination": "Thailand", "cost": 150, "duration": 2.0 },
+    { "source": "Malaysia", "destination": "Myanmar", "cost": 80, "duration": 2.5 },
+    { "source": "Myanmar", "destination": "Thailand", "cost": 200, "duration": 1.5 },
+    { "source": "Myanmar", "destination": "China", "cost": 160, "duration": 3.0 },
+    { "source": "Thailand", "destination": "Vietnam", "cost": 220, "duration": 1.5 },
+    { "source": "Thailand", "destination": "China", "cost": 250, "duration": 3.5 },
+    { "source": "Vietnam", "destination": "China", "cost": 120, "duration": 2.0 },
+    { "source": "China", "destination": "Kazakhstan", "cost": 400, "duration": 5.0 },
+    { "source": "China", "destination": "South Korea", "cost": 180, "duration": 2.5 },
+    { "source": "China", "destination": "Russia", "cost": 220, "duration": 6.0 },
+    { "source": "Kazakhstan", "destination": "Russia", "cost": 450, "duration": 3.0 },
+    { "source": "Russia", "destination": "South Korea", "cost": 300, "duration": 4.5 },
+    { "source": "South Korea", "destination": "Japan", "cost": 280, "duration": 2.0 },
+    { "source": "Taiwan", "destination": "South Korea", "cost": 350, "duration": 2.5 },
+    { "source": "Taiwan", "destination": "Japan", "cost": 150, "duration": 2.5 },
+    { "source": "Taiwan", "destination": "China", "cost": 320, "duration": 1.5 }
+  ],
+  "positions": {
+    "Kazakhstan": { "x": 150.0, "y": 90.0 },
+    "Russia": { "x": 400.0, "y": 70.0 },
+    "China": { "x": 450.0, "y": 180.0 },
+    "South Korea": { "x": 650.0, "y": 120.0 },
+    "Japan": { "x": 800.0, "y": 200.0 },
+    "Myanmar": { "x": 250.0, "y": 280.0 },
+    "Thailand": { "x": 350.0, "y": 350.0 },
+    "Vietnam": { "x": 480.0, "y": 350.0 },
+    "Taiwan": { "x": 620.0, "y": 280.0 },
+    "Malaysia": { "x": 220.0, "y": 380.0 },
+    "Indonesia": { "x": 100.0, "y": 450.0 }
+  }
+}

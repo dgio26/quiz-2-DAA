@@ -101,4 +101,43 @@ class Graph {
             message: `Quickest route from ${start} to ${destination} is ${result.distance} hour(s) with the route being:\n${result.path.join(' → ')}`
         };
     }
+
+    findBestRoute(start, destination) {
+        const combinedGraph = new Map();
+        
+        for (let [node, neighbors] of this.costEdges) {
+            combinedGraph.set(node, new Map());
+            for (let [neighbor, cost] of neighbors) {
+                const duration = this.timeEdges.get(node).get(neighbor);
+                const combinedWeight = cost + (100 * duration);
+                combinedGraph.get(node).set(neighbor, combinedWeight);
+            }
+        }
+
+        const result = this.dijkstra(combinedGraph, start, destination);
+        if (result.path.length === 0) {
+            return { error: `No route from ${start} to ${destination}` };
+        }
+
+        let totalCost = 0;
+        let totalDuration = 0;
+        for (let i = 0; i < result.path.length - 1; i++) {
+            const from = result.path[i];
+            const to = result.path[i + 1];
+            totalCost += this.costEdges.get(from).get(to);
+            totalDuration += this.timeEdges.get(from).get(to);
+        }
+
+        return {
+            type: 'best',
+            cost: totalCost,
+            duration: totalDuration,
+            path: result.path,
+            message: `Most efficient route from ${start} to ${destination} is:\n${result.path.join(' → ')}\nCost: $${totalCost}, Duration: ${totalDuration} hours`
+        };
+    }
+
+    getAllCountries() {
+        return Array.from(this.nodes).sort();
+    }
 }
