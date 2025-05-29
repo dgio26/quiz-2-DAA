@@ -1,0 +1,369 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.controls-panel {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.search-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.country-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.country-select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.route-btn {
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.route-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.cheapest {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+}
+
+.cheapest:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(72, 187, 120, 0.3);
+}
+
+.quickest {
+    background: linear-gradient(135deg, #ed8936, #dd6b20);
+    color: white;
+}
+
+.quickest:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(237, 137, 54, 0.3);
+}
+
+.best {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.best:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.result-section {
+    margin-top: 30px;
+}
+
+.result-container {
+    background: #f7fafc;
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 4px solid #667eea;
+}
+
+.result-container.hidden {
+    display: none;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.result-header h3 {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.result-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.result-badge.cheapest {
+    background: #c6f6d5;
+    color: #22543d;
+}
+
+.result-badge.quickest {
+    background: #fed7c3;
+    color: #7b341e;
+}
+
+.result-badge.best {
+    background: #e6fffa;
+    color: #234e52;
+}
+
+.result-content {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.clear-btn {
+    background: #e2e8f0;
+    color: #4a5568;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+    background: #cbd5e0;
+}
+
+.visualization-panel {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.graph-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.graph-container h2 {
+    margin: 0 0 15px 0;
+    color: #1f2937;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+#graph-svg {
+    width: 100%;
+    height: 500px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.legend {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+}
+
+.legend-color.cost {
+    background-color: #dc2626;
+}
+
+.legend-color.duration {
+    background-color: #2563eb;
+}
+
+.country-node {
+    fill: #ffd166;
+    stroke: #073b4c;
+    stroke-width: 2px;
+}
+
+.country-node:hover {
+    fill: #764ba2;
+}
+
+.country-node.highlighted {
+    stroke: #06d6a0;
+    stroke-width: 4px;
+}
+
+.country-label {
+    font-size: 14px;
+    fill: black;
+    font-family: sans-serif;
+}
+
+.route-line {
+    stroke: #888;
+    stroke-width: 2;
+    opacity: 0.8;
+}
+
+.route-line.highlighted {
+    stroke: #06d6a0;
+    stroke-width: 3.5px;
+    opacity: 1;
+}
+
+.route-line.selected {
+    stroke-width: 3px;
+    stroke: #007bff;
+}
+
+.edge-label {
+    font-size: 11px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    pointer-events: none;
+    user-select: none;
+}
+
+.cost-label {
+    fill: red;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.duration-label {
+    fill: blue;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .controls-panel {
+        padding: 20px;
+    }
+    
+    .visualization-panel {
+        padding: 20px;
+    }
+    
+    #graph-svg {
+        height: 400px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+}
