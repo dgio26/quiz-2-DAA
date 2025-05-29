@@ -1,6 +1,7 @@
 class TravelPlannerApp {
     constructor() {
         this.graph = new Graph();
+        this.visualization = null;
         this.routesData = null;
         this.init();
     }
@@ -9,6 +10,7 @@ class TravelPlannerApp {
         try {
             await this.loadRoutesData();
             this.initializeGraph();
+            this.visualization = new GraphVisualization('graph-svg', this.graph, this.routesData);
             this.setupUI();
             console.log('Travel Planner App initialized successfully');
         } catch (error) {
@@ -222,6 +224,37 @@ class TravelPlannerApp {
 
     getGraph() {
         return this.graph;
+    }
+
+    getVisualization() {
+        return this.visualization;
+    }
+
+    getRoutesData() {
+        return this.routesData;
+    }
+
+    addRoute(source, destination, cost, duration) {
+        this.graph.addEdge(source, destination, cost, duration);
+        this.routesData.routes.push({ source, destination, cost, duration });
+        this.populateCountrySelects();
+        if (this.visualization) {
+            this.visualization.updateGraph(this.routesData);
+        }
+        console.log(`Added new route: ${source} ↔ ${destination}`);
+    }
+
+    removeRoute(source, destination) {
+        this.routesData.routes = this.routesData.routes.filter(route => 
+            !((route.source === source && route.destination === destination) ||
+              (route.source === destination && route.destination === source))
+        );
+        this.initializeGraph();
+        this.populateCountrySelects();
+        if (this.visualization) {
+            this.visualization.updateGraph(this.routesData);
+        }
+        console.log(`Removed route: ${source} ↔ ${destination}`);
     }
 }
 
