@@ -75,4 +75,30 @@ class Graph {
             path: distances.get(end) === Infinity ? [] : path
         };
     }
+
+    findCheapestRoute(start, destination) {
+        const result = this.dijkstra(this.costEdges, start, destination);
+        if (result.path.length === 0) {
+            return { error: `No route from ${start} to ${destination}` };
+        }
+        return {
+            type: 'cheapest',
+            cost: result.distance,
+            path: result.path,
+            message: `Cheapest route from ${start} to ${destination} costs $${result.distance} with the route being:\n${result.path.join(' → ')}`
+        };
+    }
+
+    findQuickestRoute(start, destination) {
+        const result = this.dijkstra(this.timeEdges, start, destination);
+        if (result.path.length === 0) {
+            return { error: `No route from ${start} to ${destination}` };
+        }
+        return {
+            type: 'quickest',
+            duration: result.distance,
+            path: result.path,
+            message: `Quickest route from ${start} to ${destination} is ${result.distance} hour(s) with the route being:\n${result.path.join(' → ')}`
+        };
+    }
 }
